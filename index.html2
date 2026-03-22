@@ -1,0 +1,55 @@
+import { motion } from "framer-motion";
+
+export default function Pizzeria3D() {
+  return (
+    <div className="relative h-screen w-full overflow-hidden bg-black text-white">
+      {/* Background animato */}
+      <motion.div
+        className="absolute inset-0"
+        animate={{
+          background: [
+            "radial-gradient(circle at 20% 20%, #ff3c00, #000000)",
+            "radial-gradient(circle at 80% 80%, #ff8c00, #000000)",
+            "radial-gradient(circle at 50% 50%, #ff3c00, #000000)",
+          ],
+        }}
+        transition={{ duration: 10, repeat: Infinity }}
+      />
+
+      {/* Contenuto principale */}
+      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
+        <motion.h1
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="text-5xl md:text-7xl font-bold"
+        >
+          NUOVO SECOLO
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+          className="mt-4 text-lg text-gray-300"
+        >
+          Pizza al taglio. Moderna. Unica.
+        </motion.p>
+
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          className="mt-8 px-6 py-3 bg-orange-600 rounded-2xl"
+        >
+          Ordina ora
+        </motion.button>
+      </div>
+
+      {/* Elemento 3D fake (glow circle) */}
+      <motion.div
+        className="absolute bottom-10 right-10 w-40 h-40 rounded-full bg-orange-500 blur-2xl"
+        animate={{ scale: [1, 1.3, 1] }}
+        transition={{ duration: 4, repeat: Infinity }}
+      />
+    </div>
+  );
+}
